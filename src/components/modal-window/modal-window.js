@@ -111,7 +111,8 @@ export default class ModalWindow extends Component {
           </div>
           <form
             className='form'
-            onSubmit={this.onSubmit}>
+            onSubmit={this.onSubmit}
+            id='form' >
 
             <label className='form__label'>
               Фамилия
@@ -167,14 +168,16 @@ export default class ModalWindow extends Component {
                 onChange={this.changeLogin}
                 value={this.state.labelLogin} />
             </label>
-
+          </form>
+          <div className='form__button-block'>
             <button
               className='form__button'
               type='submit'
-              disabled>
+              disabled
+              form='form'>
               Создать
             </button>
-          </form>
+          </div>
         </div>
       </div>
     )
