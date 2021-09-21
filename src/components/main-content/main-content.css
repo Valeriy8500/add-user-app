@@ -1,0 +1,50 @@
+.main-content {
+  width: 100%;
+  background-color: #E5E5E5;
+  padding: 36px 32px 0 32px;
+}
+
+.main-content__title-button-block {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-content__title {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  margin: 0;
+  margin-bottom: 36px;
+}
+
+.main-content__button {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  width: 159px;
+  height: 36px;
+  background-color: #4587ED;
+  border: none;
+  color: #ffffff;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-content__button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.main-content__plus {
+  width: 20px;
+  height: 20px;
+  color: #ffffff;
+  margin-right: 8px;
+}

@@ -1,0 +1,15 @@
+.page {
+  font-family: 'Roboto', Arial, sans-serif;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.app {
+  width: 100%;
+}
+
+.header {
+  width: 100%;
+  border-top: 56px solid #353D4B;
+}
