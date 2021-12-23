@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 
+import SideBar from '../sideBar/sideBar';
 import List from '../list/list';
 import ModalWindow from '../modal-window/modal-window';
 import info from '../../utils/utils';
 
 import plus from './plus.svg';
 
-import './main-content.css';
+import './content.css';
 
-export default class MainContent extends Component {
+export default class Content extends Component {
 
   state = {
     infoData: info,
-    modalWindow: false
+    showModal: false
   };
 
   addItem = (newItem) => {
@@ -29,27 +30,29 @@ export default class MainContent extends Component {
 
   openModalWindow = () => {
     this.setState({
-      modalWindow: true
+      showModal: true
     });
   };
 
   closeModalWindow = () => {
     this.setState({
-      modalWindow: false
+      showModal: false
     });
   };
 
   render() {
 
-    const { infoData, modalWindow } = this.state;
+    const { infoData, showModal } = this.state;
 
-    if (modalWindow) {
-      return (
+    return (
+      <div className='content'>
+        <SideBar />
         <div className='main-content'>
           <div className='main-content__title-button-block'>
             <h1 className='main-content__title'>Пользователи</h1>
             <button
-              className='main-content__button'>
+              className='main-content__button'
+              onClick={() => this.openModalWindow()}>
               <img
                 className='main-content__plus'
                 src={plus}
@@ -59,29 +62,11 @@ export default class MainContent extends Component {
           </div>
 
           <List info={infoData} />
-          <ModalWindow
-            closeModal={this.closeModalWindow}
-            add={this.addItem} />
+          {showModal &&
+            <ModalWindow
+              closeModal={this.closeModalWindow}
+              add={this.addItem} />}
         </div>
-      )
-    };
-
-    return (
-      <div className='main-content'>
-        <div className='main-content__title-button-block'>
-          <h1 className='main-content__title'>Пользователи</h1>
-          <button
-            className='main-content__button'
-            onClick={() => this.openModalWindow()}>
-            <img
-              className='main-content__plus'
-              src={plus}
-              alt='плюс' />
-            Добавить
-          </button>
-        </div>
-
-        <List info={infoData} />
       </div>
     )
   };
