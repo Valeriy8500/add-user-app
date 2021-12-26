@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import closeButton from './close_button.svg';
 
@@ -14,7 +14,7 @@ const ModalWindow = ({ closeModal, addItem }) => {
     labelLogin: ''
   });
 
-  useEffect(() => {
+  React.useEffect(() => {
 
     if (state.labelSecondName !== '' &&
       state.labelName !== '' &&
@@ -25,7 +25,10 @@ const ModalWindow = ({ closeModal, addItem }) => {
       const addButton = document.querySelector('.form__button');
       addButton.disabled = false;
       addButton.style = 'color: #ffffff; opacity: 1';
-    };
+    } else {
+      const addButton = document.querySelector('.form__button');
+      addButton.style = 'color: rgba(255, 255, 255, 0.4); opacity: 0.5';
+    }
   }, [state]);
 
   const onSubmit = (evt) => {
