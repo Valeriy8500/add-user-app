@@ -9,7 +9,8 @@ import './tableList.css';
 
 const TableList = ({ info }) => {
 
-  const InfoRow = () => {
+  const InfoRow = React.useMemo(() => {
+
     return info.map((item) => {
       return (
         <li className='main-content__item' key={item.login}>
@@ -25,16 +26,14 @@ const TableList = ({ info }) => {
         </li>
       )
     });
-  };
-
-  const renderInfoRow = InfoRow();
+  }, [info]);
 
   return (
     <ul className='main-content__table-list'>
       <li className='main-content__item'>
         {headingsItems.map((item) => <span className='main-content__item-el' key={item}>{item}</span>)}
       </li>
-      {renderInfoRow}
+      {InfoRow}
     </ul>
   )
 };
