@@ -1,4 +1,4 @@
-const info = [
+export const info = [
   {
     secondName: 'Иванов',
     name: 'Иван',
@@ -43,4 +43,10 @@ const info = [
   }
 ];
 
-export default info;
+export const headingsItems = [
+  'Фамилия',
+  'Имя',
+  'Отчество',
+  'E-mail',
+  'Логин'
+];

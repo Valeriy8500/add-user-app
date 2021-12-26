@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import closeButton from './close_button.svg';
 
-import './modal-window.css';
+import './modalWindow.css';
 
 export default class ModalWindow extends Component {
 
@@ -30,7 +30,7 @@ export default class ModalWindow extends Component {
       email: labelEmail,
       login: labelLogin
     };
-    this.props.add(newInfoItem);
+    this.props.addItem(newInfoItem);
     this.setState({
       labelSecondName: '',
       labelName: '',
@@ -39,7 +39,7 @@ export default class ModalWindow extends Component {
       labelLogin: ''
     });
 
-    this.props.closeModal();
+    this.props.closeModal(false);
   };
 
   changeSecondName = (evt) => {
@@ -107,7 +107,7 @@ export default class ModalWindow extends Component {
             <button
               className='modal-window__close-button'
               style={{ backgroundImage: `url(${closeButton})` }}
-              onClick={() => this.props.closeModal()} />
+              onClick={() => this.props.closeModal(false)} />
           </div>
           <form
             className='form'

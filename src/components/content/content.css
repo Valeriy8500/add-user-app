@@ -10,7 +10,7 @@
   padding: 36px 32px 0 32px;
 }
 
-.main-content__title-button-block {
+.main-content__header {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -48,7 +48,7 @@
   opacity: 0.8;
 }
 
-.main-content__plus {
+.main-content__icon-plus {
   width: 20px;
   height: 20px;
   color: #ffffff;
