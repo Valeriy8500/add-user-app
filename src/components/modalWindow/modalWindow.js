@@ -1,26 +1,30 @@
 import React from 'react';
 
+import { Input } from '../../atomicComponents/input';
+
 import closeButton from './close_button.svg';
 
 import './modalWindow.css';
 
+const inputsDefaultValues = {
+  secondName: '',
+  name: '',
+  middleName: '',
+  email: '',
+  login: ''
+};
+
 const ModalWindow = ({ closeModal, addItem }) => {
 
-  const [state, setState] = React.useState({
-    labelSecondName: '',
-    labelName: '',
-    labelMiddleName: '',
-    labelEmail: '',
-    labelLogin: ''
-  });
+  const [state, setState] = React.useState(inputsDefaultValues);
 
   React.useEffect(() => {
 
-    if (state.labelSecondName !== '' &&
-      state.labelName !== '' &&
-      state.labelMiddleName !== '' &&
-      state.labelEmail !== '' &&
-      state.labelLogin !== '') {
+    if (state.secondName !== '' &&
+      state.name !== '' &&
+      state.middleName !== '' &&
+      state.email !== '' &&
+      state.login !== '') {
 
       const addButton = document.querySelector('.form__button');
       addButton.disabled = false;
@@ -35,67 +39,23 @@ const ModalWindow = ({ closeModal, addItem }) => {
     evt.preventDefault();
 
     const newInfoItem = {
-      secondName: state.labelSecondName,
-      name: state.labelName,
-      middleName: state.labelMiddleName,
-      email: state.labelEmail,
-      login: state.labelLogin
+      secondName: state.secondName,
+      name: state.name,
+      middleName: state.middleName,
+      email: state.email,
+      login: state.login
     };
-    addItem(newInfoItem);
 
-    setState({
-      labelSecondName: '',
-      labelName: '',
-      labelMiddleName: '',
-      labelEmail: '',
-      labelLogin: ''
-    });
+    addItem(newInfoItem);
+    setState(inputsDefaultValues);
     closeModal(false);
   };
 
-  const changeSecondName = (evt) => {
-    setState((prev) => {
-      return {
-        ...prev,
-        labelSecondName: evt.target.value
-      }
-    });
-  };
-
-  const changeName = (evt) => {
-    setState((prev) => {
-      return {
-        ...prev,
-        labelName: evt.target.value
-      }
-    });
-  };
-
-  const changeMiddleName = (evt) => {
-    setState((prev) => {
-      return {
-        ...prev,
-        labelMiddleName: evt.target.value
-      }
-    });
-  };
-
-  const changeEmail = (evt) => {
-    setState((prev) => {
-      return {
-        ...prev,
-        labelEmail: evt.target.value
-      }
-    });
-  };
-
-  const changeLogin = (evt) => {
-    setState((prev) => {
-      return {
-        ...prev,
-        labelLogin: evt.target.value
-      }
-    });
+  const onChangeItem = (id, value) => {
+    setState((prev) => ({
+      ...prev,
+      [id]: value
+    }));
   };
 
   return (
@@ -115,59 +75,65 @@ const ModalWindow = ({ closeModal, addItem }) => {
 
           <label className='form__label'>
             Фамилия
-            <input
+            <Input
+              id='secondName'
               className='form__input'
               type='text'
               placeholder=' Введите фамилию'
               required
-              onChange={changeSecondName}
-              value={state.labelSecondName} />
+              onChange={(e) => onChangeItem(e.target.id, e.target.value)}
+              value={state.secondName} />
           </label>
 
           <label className='form__label'>
             Имя
-            <input
+            <Input
+              id='name'
               className='form__input'
               type='text'
               placeholder=' Введите имя'
               required
-              onChange={changeName}
-              value={state.labelName} />
+              onChange={(e) => onChangeItem(e.target.id, e.target.value)}
+              value={state.name} />
           </label>
 
           <label className='form__label'>
             Отчество
-            <input
+            <Input
+              id='middleName'
               className='form__input'
               type='text'
               placeholder=' Введите отчество'
               required
-              onChange={changeMiddleName}
-              value={state.labelMiddleName} />
+              onChange={(e) => onChangeItem(e.target.id, e.target.value)}
+              value={state.middleName} />
           </label>
 
           <label className='form__label'>
             E-mail
-            <input
+            <Input
+              id='email'
               className='form__input'
               type='text'
               required
               placeholder=' Введите электронную почту'
-              onChange={changeEmail}
-              value={state.labelEmail} />
+              onChange={(e) => onChangeItem(e.target.id, e.target.value)}
+              value={state.email} />
           </label>
 
           <label className='form__label'>
             Логин
-            <input
+            <Input
+              id='login'
               className='form__input'
               type='text'
               placeholder=' Введите логин'
               required
-              onChange={changeLogin}
-              value={state.labelLogin} />
+              onChange={(e) => onChangeItem(e.target.id, e.target.value)}
+              value={state.login} />
           </label>
         </form>
+
         <div className='form__button-block'>
           <button
             className='form__button'
