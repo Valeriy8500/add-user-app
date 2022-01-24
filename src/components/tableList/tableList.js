@@ -10,18 +10,17 @@ import './tableList.css';
 const TableList = ({ info }) => {
 
   const InfoRow = React.useMemo(() => {
-
-    return info.map((item) => {
+    return info.map((item, idx) => {
       return (
-        <li className='main-content__item' key={item.login}>
+        <li className='main-content__item' key={idx}>
           <span className='main-content__item-el'>{item.secondName}</span>
           <span className='main-content__item-el'>{item.name}</span>
           <span className='main-content__item-el'>{item.middleName}</span>
           <span className='main-content__item-el'>{item.email}</span>
           <span className='main-content__item-el'>{item.login}</span>
           <div className='main-content__buttons-block'>
-            <img className='main-content__info-button' src={actionButton} alt='карандаш' />
-            <img className='main-content__info-button' src={deleteButton} alt='корзина' />
+            <button className='main-content__show-btn' type='button' />
+            <button className='main-content__del-btn' type='button' />
           </div>
         </li>
       )

@@ -61,11 +61,23 @@
   justify-self: end;
 }
 
-.main-content__info-button {
+.main-content__show-btn {
+  width: 20px;
+  height: 20px;
   margin-right: 16px;
+  background-image: url(../../components/tableList/action_button.svg);
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.main-content__info-button:nth-child(2) {
-  margin-right: 0;
+.main-content__del-btn {
+  width: 20px;
+  height: 20px;
+  background-image: url(../../components/tableList/delete_button.svg);
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
+
 

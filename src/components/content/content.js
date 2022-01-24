@@ -3,6 +3,7 @@ import React from 'react';
 import SideBar from '../sideBar/sideBar';
 import TableList from '../tableList/tableList';
 import ModalWindow from '../modalWindow/modalWindow';
+import ConfirmModal from '../confirmModal/confirmModal';
 import { info } from '../../utils/utils';
 
 import plus from './plus.svg';
@@ -36,10 +37,13 @@ const Content = () => {
         </div>
 
         <TableList info={infoData} />
+
         {showModal &&
           <ModalWindow
             closeModal={setShowModal}
             addItem={addItem} />}
+
+        {/* <ConfirmModal /> */}
       </div>
     </div>
   )
