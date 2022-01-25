@@ -14,6 +14,8 @@ const inputsDefaultValues = {
   login: ''
 };
 
+let generationId = 7;
+
 const ModalWindow = ({ closeModal, addItem }) => {
 
   const [state, setState] = React.useState(inputsDefaultValues);
@@ -43,12 +45,14 @@ const ModalWindow = ({ closeModal, addItem }) => {
       name: state.name,
       middleName: state.middleName,
       email: state.email,
-      login: state.login
+      login: state.login,
+      id: generationId++
     };
 
     addItem(newInfoItem);
     setState(inputsDefaultValues);
     closeModal(false);
+    console.log(newInfoItem)
   };
 
   const onChangeItem = (id, value) => {

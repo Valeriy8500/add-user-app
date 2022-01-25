@@ -2,9 +2,6 @@ import React from 'react';
 
 import { headingsItems } from '../../utils/utils';
 
-import actionButton from './action_button.svg';
-import deleteButton from './delete_button.svg'
-
 import './tableList.css';
 
 const TableList = ({ info }) => {
@@ -19,8 +16,8 @@ const TableList = ({ info }) => {
           <span className='main-content__item-el'>{item.email}</span>
           <span className='main-content__item-el'>{item.login}</span>
           <div className='main-content__buttons-block'>
-            <button className='main-content__show-btn' type='button' />
-            <button className='main-content__del-btn' type='button' />
+            <button className='main-content__show-btn far fa-edit' type='button' />
+            <button className='main-content__del-btn far fa-trash-alt' type='button' />
           </div>
         </li>
       )

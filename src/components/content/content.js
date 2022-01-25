@@ -16,7 +16,7 @@ const Content = () => {
   const [showModal, setShowModal] = React.useState(false);
 
   const addItem = (newItem) => {
-    setInfoData(prev => [newItem, ...prev]);
+    setInfoData(prev => [...prev, newItem]);
   };
 
   return (
