@@ -10,14 +10,40 @@ import plus from './plus.svg';
 
 import './content.css';
 
+const defaultId = {
+  id: null
+};
+
 const Content = () => {
 
-  const [infoData, setInfoData] = React.useState(info);
+  const [infoData, setInfoData] = React.useState(info); // Стейт элементов таблицы
   const [showModal, setShowModal] = React.useState(false); // Стейт ModalWindow
   const [showConfirmModal, setShowConfirmModal] = React.useState(false); // Стейт ConfirmModal
+  const [id, setId] = React.useState(defaultId); // Стейт id элемента по которому кликнули (для удаления)
 
-  const addItem = (newItem) => {
+  const onCreateBtn = (newItem) => {
     setInfoData(prev => [...prev, newItem]);
+  };
+
+  const onDeleteItem = (id) => {
+    setShowConfirmModal((prev) => {
+      return !prev;
+    });
+    setId(() => ({
+      id: id
+    }))
+  };
+
+  const onConfirmDelete = () => {
+    const idx = infoData.findIndex((item) => {
+      return Number(item.id) === Number(id.id)
+    });
+    const before = infoData.slice(0, idx);
+    const after = infoData.slice(idx + 1);
+    const newArray = [...before, ...after];
+
+    setInfoData(() => newArray);
+    setShowConfirmModal(prev => !prev);
   };
 
   return (
@@ -40,15 +66,19 @@ const Content = () => {
         <TableList
           info={infoData}
           setShowModal={setShowModal}
-          setShowConfirmModal={setShowConfirmModal} />
+          setShowConfirmModal={setShowConfirmModal}
+          setId={setId}
+          onDeleteItem={onDeleteItem} />
 
         {showModal &&
           <ModalWindow
             closeModal={setShowModal}
-            addItem={addItem} />}
+            onCreateBtn={onCreateBtn} />}
 
         {showConfirmModal &&
-          <ConfirmModal />}
+          <ConfirmModal
+            setShowConfirmModal={setShowConfirmModal}
+            onConfirmDelete={onConfirmDelete} />}
       </div>
     </div>
   )

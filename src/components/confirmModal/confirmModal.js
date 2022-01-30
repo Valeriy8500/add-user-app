@@ -4,7 +4,11 @@ import closeButton from './close_button.svg';
 
 import './confirmModal.css';
 
-const ConfirmModal = () => {
+const ConfirmModal = ({
+  setShowConfirmModal,
+  onConfirmDelete
+}) => {
+
   return (
     <div className="confirm-modal">
       <div className='confirm-modal__container'>
@@ -14,7 +18,8 @@ const ConfirmModal = () => {
           </h2>
           <button
             className='confirm-modal__close-button'
-            style={{ backgroundImage: `url(${closeButton})` }} />
+            style={{ backgroundImage: `url(${closeButton})` }}
+            onClick={() => setShowConfirmModal(prev => !prev)} />
         </div>
         <div className='confirm-modal-content'>
           Вы точно хотите удалить запись?
@@ -22,12 +27,14 @@ const ConfirmModal = () => {
         <div className='confirm-modal__footer'>
           <button
             className='confirm-modal__button'
-            type='submit'>
+            type='submit'
+            onClick={() => onConfirmDelete()}>
             Удалить
           </button>
           <button
             className='confirm-modal__button'
-            type='button'>
+            type='button'
+            onClick={() => setShowConfirmModal(prev => !prev)}>
             Отмена
           </button>
         </div>

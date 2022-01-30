@@ -16,7 +16,7 @@ const inputsDefaultValues = {
 
 let generationId = 7;
 
-const ModalWindow = ({ closeModal, addItem }) => {
+const ModalWindow = ({ closeModal, onCreateBtn }) => {
 
   const [state, setState] = React.useState(inputsDefaultValues);
 
@@ -49,7 +49,7 @@ const ModalWindow = ({ closeModal, addItem }) => {
       id: generationId++
     };
 
-    addItem(newInfoItem);
+    onCreateBtn(newInfoItem);
     setState(inputsDefaultValues);
     closeModal(false);
   };

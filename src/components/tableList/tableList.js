@@ -6,14 +6,13 @@ import './tableList.css';
 
 const TableList = ({
   info,
-  setShowModal,
-  setShowConfirmModal
+  onDeleteItem
 }) => {
 
   const InfoRow = React.useMemo(() => {
-    return info.map((item) => {
+    return info.map((item, idx) => {
       return (
-        <li className='main-content__item' key={item.id}>
+        <li className='main-content__item' key={idx}>
           <span className='main-content__item-el'>{item.secondName}</span>
           <span className='main-content__item-el'>{item.name}</span>
           <span className='main-content__item-el'>{item.middleName}</span>
@@ -33,16 +32,13 @@ const TableList = ({
               id={item.id}
               className='main-content__del-btn far fa-trash-alt'
               type='button'
-              onClick={(e) => setShowConfirmModal((prev) => {
-                console.log(e.target.id);
-                return !prev;
-              })}
+              onClick={(e) => onDeleteItem(e.target.id)}
             />
           </div>
         </li>
       )
     });
-  }, [info, setShowModal]);
+  }, [info, onDeleteItem]);
 
   return (
     <ul className='main-content__table-list'>

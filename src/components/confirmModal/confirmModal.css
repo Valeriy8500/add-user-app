@@ -63,6 +63,11 @@
   background-repeat: no-repeat;
 }
 
+.confirm-modal__close-button:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
 .confirm-modal-content {
   font-family: 'Roboto', Arial, sans-serif;
   font-style: normal;
