@@ -52,7 +52,6 @@ const ModalWindow = ({ closeModal, addItem }) => {
     addItem(newInfoItem);
     setState(inputsDefaultValues);
     closeModal(false);
-    console.log(newInfoItem)
   };
 
   const onChangeItem = (id, value) => {

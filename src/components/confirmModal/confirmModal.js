@@ -1,5 +1,7 @@
 import React from 'react';
 
+import closeButton from './close_button.svg';
+
 import './confirmModal.css';
 
 const ConfirmModal = () => {
@@ -10,6 +12,9 @@ const ConfirmModal = () => {
           <h2 className='confirm-modal__title'>
             Подтверждение удаления
           </h2>
+          <button
+            className='confirm-modal__close-button'
+            style={{ backgroundImage: `url(${closeButton})` }} />
         </div>
         <div className='confirm-modal-content'>
           Вы точно хотите удалить запись?

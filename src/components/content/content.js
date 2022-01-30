@@ -13,7 +13,8 @@ import './content.css';
 const Content = () => {
 
   const [infoData, setInfoData] = React.useState(info);
-  const [showModal, setShowModal] = React.useState(false);
+  const [showModal, setShowModal] = React.useState(false); // Стейт ModalWindow
+  const [showConfirmModal, setShowConfirmModal] = React.useState(false); // Стейт ConfirmModal
 
   const addItem = (newItem) => {
     setInfoData(prev => [...prev, newItem]);
@@ -36,14 +37,18 @@ const Content = () => {
           </button>
         </div>
 
-        <TableList info={infoData} />
+        <TableList
+          info={infoData}
+          setShowModal={setShowModal}
+          setShowConfirmModal={setShowConfirmModal} />
 
         {showModal &&
           <ModalWindow
             closeModal={setShowModal}
             addItem={addItem} />}
 
-        {/* <ConfirmModal /> */}
+        {showConfirmModal &&
+          <ConfirmModal />}
       </div>
     </div>
   )

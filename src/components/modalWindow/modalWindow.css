@@ -43,7 +43,7 @@
   font-family: 'Roboto', Arial, sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 24px;
   color: #ffffff;
   margin: 0;
@@ -112,8 +112,8 @@
   background-color: #F6F7F9;
   width: 100%;
   min-height: 60px;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
