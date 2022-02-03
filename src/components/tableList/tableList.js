@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { headingsItems } from '../../utils/utils';
+import { headingsItems } from '../../constans/constans';
 
 import './tableList.css';
 

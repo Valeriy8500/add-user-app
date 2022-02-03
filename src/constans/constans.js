@@ -56,3 +56,15 @@ export const headingsItems = [
   'E-mail',
   'Логин'
 ];
+
+export const inputsDefaultValues = {
+  secondName: '',
+  name: '',
+  middleName: '',
+  email: '',
+  login: ''
+};
+
+export const defaultId = {
+  id: null
+};

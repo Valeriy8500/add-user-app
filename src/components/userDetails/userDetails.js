@@ -1,24 +1,32 @@
 import React from 'react';
 
 import { Input } from '../../atomicComponents/input';
+import { inputsDefaultValues } from '../../constans/constans';
 
 import closeButton from './close_button.svg';
 
-import './modalWindow.css';
-
-const inputsDefaultValues = {
-  secondName: '',
-  name: '',
-  middleName: '',
-  email: '',
-  login: ''
-};
+import './userDetails.css';
 
 let generationId = 7;
 
-const ModalWindow = ({ closeModal, onCreateBtn }) => {
+const UserDetails = ({ closeModal, onCreateBtn }) => {
 
   const [state, setState] = React.useState(inputsDefaultValues);
+
+  const onEsc = React.useCallback((evt) => {
+    if (evt.key !== 'Escape') {
+      return;
+    }
+    closeModal();
+  }, [closeModal]);
+
+  React.useEffect(() => {
+    document.addEventListener('keydown', onEsc);
+
+    return () => {
+      document.removeEventListener('keydown', onEsc)
+    }
+  }, [onEsc]);
 
   React.useEffect(() => {
 
@@ -151,5 +159,5 @@ const ModalWindow = ({ closeModal, onCreateBtn }) => {
   )
 };
 
-export default ModalWindow;
+export default UserDetails;
 

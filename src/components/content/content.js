@@ -2,17 +2,13 @@ import React from 'react';
 
 import SideBar from '../sideBar/sideBar';
 import TableList from '../tableList/tableList';
-import ModalWindow from '../modalWindow/modalWindow';
+import UserDetails from '../userDetails/userDetails';
 import ConfirmModal from '../confirmModal/confirmModal';
-import { info } from '../../utils/utils';
+import { info, defaultId } from '../../constans/constans';
 
 import plus from './plus.svg';
 
 import './content.css';
-
-const defaultId = {
-  id: null
-};
 
 const Content = () => {
 
@@ -71,7 +67,7 @@ const Content = () => {
           onDeleteItem={onDeleteItem} />
 
         {showModal &&
-          <ModalWindow
+          <UserDetails
             closeModal={setShowModal}
             onCreateBtn={onCreateBtn} />}
 

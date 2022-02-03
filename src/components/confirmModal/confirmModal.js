@@ -9,6 +9,21 @@ const ConfirmModal = ({
   onConfirmDelete
 }) => {
 
+  const onEsc = React.useCallback((evt) => {
+    if (evt.key !== 'Escape') {
+      return;
+    }
+    setShowConfirmModal(prev => !prev);
+  }, [setShowConfirmModal]);
+
+  React.useEffect(() => {
+    document.addEventListener('keydown', onEsc);
+
+    return () => {
+      document.removeEventListener('keydown', onEsc)
+    }
+  }, [onEsc]);
+
   return (
     <div className="confirm-modal">
       <div className='confirm-modal__container'>
