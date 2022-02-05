@@ -18,13 +18,36 @@ const Content = () => {
   const [id, setId] = React.useState(defaultId); // Стейт id элемента по которому кликнули (для удаления)
   const [data, setData] = React.useState(inputsDefaultValues); // Стейт объекта (для showDetails)
 
-  const onCreateBtn = (newItem) => {
-    setInfoData(prev => [...prev, newItem]);
+  const saveData = (newData) => {
+    if (!data.id) {
+      // Создание строки
+      setInfoData(prev => [...prev, newData]);
+    } else {
+      // Обновление строки
+      updateItem();
+    }
+
+    return;
   };
 
   const closeModal = () => {
     setData(inputsDefaultValues);
     setShowModal(false);
+  };
+
+  const updateItem = () => {
+    const itemId = data.id;
+    let changeItem = infoData.filter((item) => {
+      return Number(item.id) === Number(itemId) ? item : null;
+    });
+    const changeItemIdx = infoData.findIndex((item) => {
+      return Number(item.id) === Number(itemId)
+    });
+    changeItem = data;
+    const before = infoData.slice(0, changeItemIdx);
+    const after = infoData.slice(changeItemIdx + 1);
+    const newArray = [...before, changeItem, ...after];
+    setInfoData(newArray);
   };
 
   const onDeletebtn = (id) => {
@@ -49,7 +72,6 @@ const Content = () => {
   };
 
   const onShowbtn = (id) => {
-    setShowModal(prev => !prev);
     const showData = infoData.filter((item) => {
       return Number(item.id) === Number(id) ? item : null;
     });
@@ -77,16 +99,13 @@ const Content = () => {
 
         <TableList
           info={infoData}
-          setShowModal={setShowModal}
-          setShowConfirmModal={setShowConfirmModal}
-          setId={setId}
           onDeletebtn={onDeletebtn}
           onShowbtn={onShowbtn} />
 
         {showModal &&
           <UserDetails
             closeModal={closeModal}
-            onCreateBtn={onCreateBtn}
+            saveData={saveData}
             data={data}
             setData={setData} />}
 

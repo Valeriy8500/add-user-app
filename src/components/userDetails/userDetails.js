@@ -10,7 +10,7 @@ let generationId = 7;
 
 const UserDetails = ({
   closeModal,
-  onCreateBtn,
+  saveData,
   setData,
   data
 }) => {
@@ -31,12 +31,12 @@ const UserDetails = ({
   }, [onEsc]);
 
   React.useEffect(() => {
-
-    if (data.secondName !== null &&
-      data.name !== null &&
-      data.middleName !== null &&
-      data.email !== null &&
-      data.login !== null) {
+    console.log('Change')
+    if (data.secondName !== '' &&
+      data.name !== '' &&
+      data.middleName !== '' &&
+      data.email !== '' &&
+      data.login !== '') {
 
       const addButton = document.querySelector('.form__button');
       addButton.disabled = false;
@@ -44,27 +44,24 @@ const UserDetails = ({
     } else {
       const addButton = document.querySelector('.form__button');
       addButton.style = 'color: rgba(255, 255, 255, 0.4); opacity: 0.5';
+      addButton.disabled = true;
     }
   }, [data]);
 
-  const onSubmit = (evt) => {
+  const onBtnOkHandler = (evt) => {
     evt.preventDefault();
 
-    if (data.id) {
-      closeModal();
-    } else {
-      const newInfoItem = {
-        secondName: data.secondName,
-        name: data.name,
-        middleName: data.middleName,
-        email: data.email,
-        login: data.login,
-        id: generationId++
-      };
+    const newData = {
+      secondName: data.secondName,
+      name: data.name,
+      middleName: data.middleName,
+      email: data.email,
+      login: data.login,
+      id: generationId++
+    };
 
-      onCreateBtn(newInfoItem);
-      closeModal();
-    }
+    saveData({ ...newData });
+    closeModal();
   };
 
   const onChangeItem = (id, value) => {
@@ -75,19 +72,19 @@ const UserDetails = ({
   };
 
   return (
-    <div className="modal-window">
-      <div className='modal-window__container'>
-        <div className='modal-window__header'>
-          <h2 className='modal-window__title'>Создание пользователя</h2>
+    <div className="user-details">
+      <div className='user-details__container'>
+        <div className='user-details__header'>
+          <h2 className='user-details__title'>Создание пользователя</h2>
           <button
-            className='modal-window__close-button'
+            className='user-details__close-button'
             style={{ backgroundImage: `url(${closeButton})` }}
             onClick={() => closeModal()} />
         </div>
         <form
           className='form'
-          onSubmit={onSubmit}
-          id='form' >
+          id='form'
+          onSubmit={onBtnOkHandler} >
 
           <label className='form__label'>
             Фамилия
@@ -153,10 +150,15 @@ const UserDetails = ({
         <div className='form__button-block'>
           <button
             className='form__button'
-            type='submit'
             disabled
             form='form'>
-            Создать
+            Готово
+          </button>
+          <button
+            className='form__button'
+            form='form'
+            onClick={closeModal}>
+            Отмена
           </button>
         </div>
       </div>
