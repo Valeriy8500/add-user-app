@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { Input } from '../../atomicComponents/input';
-import { inputsDefaultValues } from '../../constans/constans';
 
 import closeButton from './close_button.svg';
 
@@ -9,9 +8,12 @@ import './userDetails.css';
 
 let generationId = 7;
 
-const UserDetails = ({ closeModal, onCreateBtn }) => {
-
-  const [state, setState] = React.useState(inputsDefaultValues);
+const UserDetails = ({
+  closeModal,
+  onCreateBtn,
+  setData,
+  data
+}) => {
 
   const onEsc = React.useCallback((evt) => {
     if (evt.key !== 'Escape') {
@@ -30,11 +32,11 @@ const UserDetails = ({ closeModal, onCreateBtn }) => {
 
   React.useEffect(() => {
 
-    if (state.secondName !== '' &&
-      state.name !== '' &&
-      state.middleName !== '' &&
-      state.email !== '' &&
-      state.login !== '') {
+    if (data.secondName !== null &&
+      data.name !== null &&
+      data.middleName !== null &&
+      data.email !== null &&
+      data.login !== null) {
 
       const addButton = document.querySelector('.form__button');
       addButton.disabled = false;
@@ -43,27 +45,30 @@ const UserDetails = ({ closeModal, onCreateBtn }) => {
       const addButton = document.querySelector('.form__button');
       addButton.style = 'color: rgba(255, 255, 255, 0.4); opacity: 0.5';
     }
-  }, [state]);
+  }, [data]);
 
   const onSubmit = (evt) => {
     evt.preventDefault();
 
-    const newInfoItem = {
-      secondName: state.secondName,
-      name: state.name,
-      middleName: state.middleName,
-      email: state.email,
-      login: state.login,
-      id: generationId++
-    };
+    if (data.id) {
+      closeModal();
+    } else {
+      const newInfoItem = {
+        secondName: data.secondName,
+        name: data.name,
+        middleName: data.middleName,
+        email: data.email,
+        login: data.login,
+        id: generationId++
+      };
 
-    onCreateBtn(newInfoItem);
-    setState(inputsDefaultValues);
-    closeModal(false);
+      onCreateBtn(newInfoItem);
+      closeModal();
+    }
   };
 
   const onChangeItem = (id, value) => {
-    setState((prev) => ({
+    setData((prev) => ({
       ...prev,
       [id]: value
     }));
@@ -77,7 +82,7 @@ const UserDetails = ({ closeModal, onCreateBtn }) => {
           <button
             className='modal-window__close-button'
             style={{ backgroundImage: `url(${closeButton})` }}
-            onClick={() => closeModal(false)} />
+            onClick={() => closeModal()} />
         </div>
         <form
           className='form'
@@ -93,7 +98,7 @@ const UserDetails = ({ closeModal, onCreateBtn }) => {
               placeholder=' Введите фамилию'
               required
               onChange={(e) => onChangeItem(e.target.id, e.target.value)}
-              value={state.secondName} />
+              value={data.secondName} />
           </label>
 
           <label className='form__label'>
@@ -105,7 +110,7 @@ const UserDetails = ({ closeModal, onCreateBtn }) => {
               placeholder=' Введите имя'
               required
               onChange={(e) => onChangeItem(e.target.id, e.target.value)}
-              value={state.name} />
+              value={data.name} />
           </label>
 
           <label className='form__label'>
@@ -117,7 +122,7 @@ const UserDetails = ({ closeModal, onCreateBtn }) => {
               placeholder=' Введите отчество'
               required
               onChange={(e) => onChangeItem(e.target.id, e.target.value)}
-              value={state.middleName} />
+              value={data.middleName} />
           </label>
 
           <label className='form__label'>
@@ -129,7 +134,7 @@ const UserDetails = ({ closeModal, onCreateBtn }) => {
               required
               placeholder=' Введите электронную почту'
               onChange={(e) => onChangeItem(e.target.id, e.target.value)}
-              value={state.email} />
+              value={data.email} />
           </label>
 
           <label className='form__label'>
@@ -141,7 +146,7 @@ const UserDetails = ({ closeModal, onCreateBtn }) => {
               placeholder=' Введите логин'
               required
               onChange={(e) => onChangeItem(e.target.id, e.target.value)}
-              value={state.login} />
+              value={data.login} />
           </label>
         </form>
 

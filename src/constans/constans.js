@@ -58,11 +58,12 @@ export const headingsItems = [
 ];
 
 export const inputsDefaultValues = {
-  secondName: '',
-  name: '',
-  middleName: '',
-  email: '',
-  login: ''
+  secondName: null,
+  name: null,
+  middleName: null,
+  email: null,
+  login: null,
+  id: null
 };
 
 export const defaultId = {

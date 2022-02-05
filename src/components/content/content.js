@@ -4,7 +4,7 @@ import SideBar from '../sideBar/sideBar';
 import TableList from '../tableList/tableList';
 import UserDetails from '../userDetails/userDetails';
 import ConfirmModal from '../confirmModal/confirmModal';
-import { info, defaultId } from '../../constans/constans';
+import { info, defaultId, inputsDefaultValues } from '../../constans/constans';
 
 import plus from './plus.svg';
 
@@ -13,15 +13,21 @@ import './content.css';
 const Content = () => {
 
   const [infoData, setInfoData] = React.useState(info); // Стейт элементов таблицы
-  const [showModal, setShowModal] = React.useState(false); // Стейт ModalWindow
+  const [showModal, setShowModal] = React.useState(false); // Стейт UserDetails
   const [showConfirmModal, setShowConfirmModal] = React.useState(false); // Стейт ConfirmModal
   const [id, setId] = React.useState(defaultId); // Стейт id элемента по которому кликнули (для удаления)
+  const [data, setData] = React.useState(inputsDefaultValues); // Стейт объекта (для showDetails)
 
   const onCreateBtn = (newItem) => {
     setInfoData(prev => [...prev, newItem]);
   };
 
-  const onDeleteItem = (id) => {
+  const closeModal = () => {
+    setData(inputsDefaultValues);
+    setShowModal(false);
+  };
+
+  const onDeletebtn = (id) => {
     setShowConfirmModal((prev) => {
       return !prev;
     });
@@ -40,6 +46,16 @@ const Content = () => {
 
     setInfoData(() => newArray);
     setShowConfirmModal(prev => !prev);
+  };
+
+  const onShowbtn = (id) => {
+    setShowModal(prev => !prev);
+    const showData = infoData.filter((item) => {
+      return Number(item.id) === Number(id) ? item : null;
+    });
+
+    setData(showData[0]);
+    setShowModal(true);
   };
 
   return (
@@ -64,12 +80,15 @@ const Content = () => {
           setShowModal={setShowModal}
           setShowConfirmModal={setShowConfirmModal}
           setId={setId}
-          onDeleteItem={onDeleteItem} />
+          onDeletebtn={onDeletebtn}
+          onShowbtn={onShowbtn} />
 
         {showModal &&
           <UserDetails
-            closeModal={setShowModal}
-            onCreateBtn={onCreateBtn} />}
+            closeModal={closeModal}
+            onCreateBtn={onCreateBtn}
+            data={data}
+            setData={setData} />}
 
         {showConfirmModal &&
           <ConfirmModal

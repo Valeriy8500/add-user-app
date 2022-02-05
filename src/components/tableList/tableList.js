@@ -6,7 +6,8 @@ import './tableList.css';
 
 const TableList = ({
   info,
-  onDeleteItem
+  onDeletebtn,
+  onShowbtn
 }) => {
 
   const InfoRow = React.useMemo(() => {
@@ -23,22 +24,19 @@ const TableList = ({
               id={item.id}
               className='main-content__show-btn far fa-edit'
               type='button'
-            // onClick={(e) => setShowModal((prev) => {
-            //   console.log(e.target)
-            //   return !prev
-            // })}
+              onClick={(e) => onShowbtn(e.target.id)}
             />
             <button
               id={item.id}
               className='main-content__del-btn far fa-trash-alt'
               type='button'
-              onClick={(e) => onDeleteItem(e.target.id)}
+              onClick={(e) => onDeletebtn(e.target.id)}
             />
           </div>
         </li>
       )
     });
-  }, [info, onDeleteItem]);
+  }, [info, onDeletebtn, onShowbtn]);
 
   return (
     <ul className='main-content__table-list'>
