@@ -10,9 +10,11 @@ import plus from './plus.svg';
 
 import './content.css';
 
+const storageInfo = JSON.parse(localStorage.getItem('info'));
+
 const Content = () => {
 
-  const [infoData, setInfoData] = React.useState(info); // Стейт элементов таблицы
+  const [infoData, setInfoData] = React.useState(storageInfo); // Стейт элементов таблицы
   const [showModal, setShowModal] = React.useState(false); // Стейт UserDetails
   const [showConfirmModal, setShowConfirmModal] = React.useState(false); // Стейт ConfirmModal
   const [id, setId] = React.useState(defaultId); // Стейт id элемента по которому кликнули (для удаления)

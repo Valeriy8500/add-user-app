@@ -49,6 +49,9 @@ export const info = [
   }
 ];
 
+const jsonInfo = JSON.stringify(info);
+localStorage.setItem('info', jsonInfo);
+
 export const headingsItems = [
   'Фамилия',
   'Имя',

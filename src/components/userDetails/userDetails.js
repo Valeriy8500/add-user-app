@@ -31,7 +31,6 @@ const UserDetails = ({
   }, [onEsc]);
 
   React.useEffect(() => {
-    console.log('Change')
     if (data.secondName !== '' &&
       data.name !== '' &&
       data.middleName !== '' &&

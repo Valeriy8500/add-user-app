@@ -1,6 +1,6 @@
 .content {
   width: 100%;
-  min-height: 1024px;
+  height: 100vh;
   display: flex;
 }
 
