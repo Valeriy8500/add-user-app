@@ -86,7 +86,7 @@ const UserDetails = ({
           onSubmit={onBtnOkHandler} >
 
           <label className='form__label'>
-            Фамилия
+            Фамилия *
             <Input
               id='secondName'
               className='form__input'
@@ -98,7 +98,7 @@ const UserDetails = ({
           </label>
 
           <label className='form__label'>
-            Имя
+            Имя *
             <Input
               id='name'
               className='form__input'
@@ -110,7 +110,7 @@ const UserDetails = ({
           </label>
 
           <label className='form__label'>
-            Отчество
+            Отчество *
             <Input
               id='middleName'
               className='form__input'
@@ -122,7 +122,7 @@ const UserDetails = ({
           </label>
 
           <label className='form__label'>
-            E-mail
+            E-mail *
             <Input
               id='email'
               className='form__input'
@@ -134,7 +134,7 @@ const UserDetails = ({
           </label>
 
           <label className='form__label'>
-            Логин
+            Логин *
             <Input
               id='login'
               className='form__input'
@@ -144,6 +144,10 @@ const UserDetails = ({
               onChange={(e) => onChangeItem(e.target.id, e.target.value)}
               value={data.login} />
           </label>
+
+          <p className='form_paragraph'>
+            Поля, помеченные * обязательны для заполнения
+          </p>
         </form>
 
         <div className='form__button-block'>
