@@ -9,8 +9,11 @@ import './content.css';
 
 const Content = () => {
   const [infoData, setInfoData] = React.useState(() => {
-    const saved = JSON.parse(localStorage.getItem('info'));
-    return saved || defaultInfo;
+    // При 1 загрузке в качестве начального значения рендерится
+    // массив defaultInfo, а далее начальное значения
+    // при перезагрузке будет измененный массив из localStorage
+    const storageInfo = JSON.parse(localStorage.getItem('info'));
+    return storageInfo || defaultInfo;
   }); // Стейт элементов таблицы
 
   const [showModal, setShowModal] = React.useState(false); // Стейт UserDetails
@@ -34,18 +37,20 @@ const Content = () => {
         return [...prev, newData];
       });
     } else {
-      // Обновление строки
+      // Редактирование строки
       updateItem();
     }
     return;
   };
 
   const closeModal = () => {
+    // Закрытие модального окна
     setData(inputsDefaultValues);
     setShowModal(false);
   };
 
   const updateItem = () => {
+    // Редактирование строки
     const itemId = data.id;
     let changeItem = infoData.filter((item) => {
       return Number(item.id) === Number(itemId) ? item : null;
@@ -61,6 +66,7 @@ const Content = () => {
   };
 
   const onDeletebtn = (id) => {
+    // Клик на кнопку удалить, вызов confirmModal
     setShowConfirmModal((prev) => {
       return !prev;
     });
@@ -70,6 +76,7 @@ const Content = () => {
   };
 
   const onConfirmDelete = () => {
+    // Клик на кнопку удалить в confirmModal
     const idx = infoData.findIndex((item) => {
       return Number(item.id) === Number(id.id)
     });
@@ -82,6 +89,7 @@ const Content = () => {
   };
 
   const onShowbtn = (id) => {
+    // Клик на кнопку редактировать
     const showData = infoData.filter((item) => {
       return Number(item.id) === Number(id) ? item : null;
     });

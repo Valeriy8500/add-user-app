@@ -27,7 +27,7 @@
   font-family: 'Roboto', Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 20px;
   color: #353D4B;
 }
@@ -36,13 +36,9 @@
   font-family: 'Roboto', Arial, sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 18px;
   line-height: 20px;
   color: #353D4B;
-}
-
-.main-content__item-el:nth-child(4), .main-content__item-el:nth-child(5) {
-  color: #000000;
 }
 
 .main-content__item:last-child {
@@ -66,6 +62,9 @@
   height: 40px;
   border: none;
   background-color: white;
+  font-weight: 600;
+  font-size: 20px;
+  color: #353D4B;
 }
 
 .main-content__show-btn:hover {
@@ -78,12 +77,12 @@
   height: 40px;
   border: none;
   background-color: white;
+  font-weight: 600;
+  font-size: 20px;
+  color: #353D4B;
 }
 
 .main-content__del-btn:hover {
   cursor: pointer;
   opacity: 0.6;
 }
-
-
-

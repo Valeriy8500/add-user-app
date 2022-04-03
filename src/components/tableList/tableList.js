@@ -22,6 +22,7 @@ const TableList = ({
               id={item.id}
               className='main-content__show-btn far fa-edit'
               type='button'
+              title='Редактировать'
               onClick={(e) => onShowbtn(e.target.id)}
             />
             <button
@@ -29,6 +30,7 @@ const TableList = ({
               className='main-content__del-btn far fa-trash-alt'
               type='button'
               onClick={(e) => onDeletebtn(e.target.id)}
+              title='Удалить'
             />
           </div>
         </li>
