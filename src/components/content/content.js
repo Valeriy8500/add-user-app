@@ -1,34 +1,42 @@
 import React from 'react';
-
 import SideBar from '../sideBar/sideBar';
 import TableList from '../tableList/tableList';
 import UserDetails from '../userDetails/userDetails';
 import ConfirmModal from '../confirmModal/confirmModal';
-import { info, defaultId, inputsDefaultValues } from '../../constans/constans';
-
+import { defaultInfo, defaultId, inputsDefaultValues } from '../../constans/constans';
 import plus from './plus.svg';
-
 import './content.css';
 
-const storageInfo = JSON.parse(localStorage.getItem('info'));
-
 const Content = () => {
+  const [infoData, setInfoData] = React.useState(() => {
+    const saved = JSON.parse(localStorage.getItem('info'));
+    return saved || defaultInfo;
+  }); // Стейт элементов таблицы
 
-  const [infoData, setInfoData] = React.useState(storageInfo); // Стейт элементов таблицы
   const [showModal, setShowModal] = React.useState(false); // Стейт UserDetails
   const [showConfirmModal, setShowConfirmModal] = React.useState(false); // Стейт ConfirmModal
   const [id, setId] = React.useState(defaultId); // Стейт id элемента по которому кликнули (для удаления)
   const [data, setData] = React.useState(inputsDefaultValues); // Стейт объекта (для showDetails)
 
+  const updateList = React.useCallback(() => {
+    // Добавление в localStorage новый массив с данными для отображения
+    localStorage.setItem('info', JSON.stringify(infoData));
+  }, [infoData]);
+
+  React.useEffect(() => {
+    updateList();
+  }, [updateList]);
+
   const saveData = (newData) => {
     if (!data.id) {
       // Создание строки
-      setInfoData(prev => [...prev, newData]);
+      setInfoData(prev => {
+        return [...prev, newData];
+      });
     } else {
       // Обновление строки
       updateItem();
     }
-
     return;
   };
 

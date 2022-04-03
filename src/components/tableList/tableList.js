@@ -1,7 +1,5 @@
 import React from 'react';
-
 import { headingsItems } from '../../constans/constans';
-
 import './tableList.css';
 
 const TableList = ({

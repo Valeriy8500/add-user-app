@@ -1,9 +1,6 @@
 import React from 'react';
-
 import { Input } from '../../atomicComponents/input';
-
 import closeButton from './close_button.svg';
-
 import './userDetails.css';
 
 let generationId = 7;

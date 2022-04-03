@@ -1,4 +1,4 @@
-export const info = [
+export const defaultInfo = [
   {
     secondName: 'Иванов',
     name: 'Иван',
@@ -48,9 +48,6 @@ export const info = [
     id: 6
   }
 ];
-
-const jsonInfo = JSON.stringify(info);
-localStorage.setItem('info', jsonInfo);
 
 export const headingsItems = [
   'Фамилия',
