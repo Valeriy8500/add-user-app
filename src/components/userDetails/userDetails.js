@@ -48,23 +48,23 @@ const UserDetails = ({
     evt.preventDefault();
 
     const newData = {
-      secondName: data.secondName,
-      name: data.name,
-      middleName: data.middleName,
-      email: data.email,
-      login: data.login,
+      secondName: data.secondName.trim(),
+      name: data.name.trim(),
+      middleName: data.middleName.trim(),
+      email: data.email.trim(),
+      login: data.login.trim(),
       id: generationId++
     };
-
     saveData({ ...newData });
     closeModal();
   };
 
   const onChangeItem = (id, value) => {
-    setData((prev) => ({
-      ...prev,
-      [id]: value
-    }));
+    if (value.trim() === '') {
+      setData((prev) => ({ ...prev, [id]: '' }));
+    } else {
+      setData((prev) => ({ ...prev, [id]: value }));
+    }
   };
 
   return (

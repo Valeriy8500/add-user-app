@@ -1,7 +1,5 @@
 import React from 'react';
-
 import closeButton from './close_button.svg';
-
 import './confirmModal.css';
 
 const ConfirmModal = ({

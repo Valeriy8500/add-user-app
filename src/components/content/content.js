@@ -3,23 +3,27 @@ import SideBar from '../sideBar/sideBar';
 import TableList from '../tableList/tableList';
 import UserDetails from '../userDetails/userDetails';
 import ConfirmModal from '../confirmModal/confirmModal';
-import { defaultInfo, defaultId, inputsDefaultValues } from '../../constans/constans';
 import plus from './plus.svg';
 import './content.css';
+import {
+  defaultInfo,
+  defaultId,
+  inputsDefaultValues
+} from '../../constans/constans';
 
 const Content = () => {
   const [infoData, setInfoData] = React.useState(() => {
     // При 1 загрузке в качестве начального значения рендерится
-    // массив defaultInfo, а далее начальное значения
-    // при перезагрузке будет измененный массив из localStorage
-    const storageInfo = JSON.parse(localStorage.getItem('info'));
+    // массив defaultInfo, а далее начальное значение,
+    // при перезагрузке будет-измененный массив из localStorage
+    const storageInfo = JSON.parse(localStorage.getItem('info'));  // Todo: посмотреть как сделано в todo-list-2
     return storageInfo || defaultInfo;
-  }); // Стейт элементов таблицы
+  }); // стейт элементов таблицы
 
-  const [showModal, setShowModal] = React.useState(false); // Стейт UserDetails
-  const [showConfirmModal, setShowConfirmModal] = React.useState(false); // Стейт ConfirmModal
-  const [id, setId] = React.useState(defaultId); // Стейт id элемента по которому кликнули (для удаления)
-  const [data, setData] = React.useState(inputsDefaultValues); // Стейт объекта (для showDetails)
+  const [showModal, setShowModal] = React.useState(false); // стейт открытия/закрытия модального окна
+  const [showConfirmModal, setShowConfirmModal] = React.useState(false); // стейт ConfirmModal
+  const [id, setId] = React.useState(defaultId); // стейт id элемента по которому кликнули (для удаления)
+  const [data, setData] = React.useState(inputsDefaultValues); // стейт изменяемого или добавляемого объекта
 
   const updateList = React.useCallback(() => {
     // Добавление в localStorage новый массив с данными для отображения
@@ -38,7 +42,7 @@ const Content = () => {
       });
     } else {
       // Редактирование строки
-      updateItem();
+      updateItem(newData);
     }
     return;
   };
@@ -49,19 +53,16 @@ const Content = () => {
     setShowModal(false);
   };
 
-  const updateItem = () => {
+  const updateItem = (newData) => {
     // Редактирование строки
     const itemId = data.id;
-    let changeItem = infoData.filter((item) => {
-      return Number(item.id) === Number(itemId) ? item : null;
-    });
     const changeItemIdx = infoData.findIndex((item) => {
       return Number(item.id) === Number(itemId)
     });
-    changeItem = data;
+    const finalData = { ...newData, id: itemId };
     const before = infoData.slice(0, changeItemIdx);
     const after = infoData.slice(changeItemIdx + 1);
-    const newArray = [...before, changeItem, ...after];
+    const newArray = [...before, finalData, ...after];
     setInfoData(newArray);
   };
 

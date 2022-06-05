@@ -4,6 +4,7 @@ import Content from '../content/content';
 import './app.css';
 
 const App = () => {
+
   return (
     <div className='app'>
       <Header />
