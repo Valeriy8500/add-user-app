@@ -30,6 +30,10 @@
   font-size: 16px;
   line-height: 20px;
   color: #353D4B;
+  width: 225px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .main-content__item:first-child .main-content__item-el {
