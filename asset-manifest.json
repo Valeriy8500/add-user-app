@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/add-user-app/static/css/main.d851ef49.chunk.css",
+    "main.js": "/add-user-app/static/js/main.d4e4b2a0.chunk.js",
+    "main.js.map": "/add-user-app/static/js/main.d4e4b2a0.chunk.js.map",
+    "runtime-main.js": "/add-user-app/static/js/runtime-main.0af518a0.js",
+    "runtime-main.js.map": "/add-user-app/static/js/runtime-main.0af518a0.js.map",
+    "static/js/2.c587b7a5.chunk.js": "/add-user-app/static/js/2.c587b7a5.chunk.js",
+    "static/js/2.c587b7a5.chunk.js.map": "/add-user-app/static/js/2.c587b7a5.chunk.js.map",
+    "index.html": "/add-user-app/index.html",
+    "static/css/main.d851ef49.chunk.css.map": "/add-user-app/static/css/main.d851ef49.chunk.css.map",
+    "static/js/2.c587b7a5.chunk.js.LICENSE.txt": "/add-user-app/static/js/2.c587b7a5.chunk.js.LICENSE.txt",
+    "static/media/close_button.66cef32e.svg": "/add-user-app/static/media/close_button.66cef32e.svg",
+    "static/media/plus.bdf6500d.svg": "/add-user-app/static/media/plus.bdf6500d.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0af518a0.js",
+    "static/js/2.c587b7a5.chunk.js",
+    "static/css/main.d851ef49.chunk.css",
+    "static/js/main.d4e4b2a0.chunk.js"
+  ]
+}
