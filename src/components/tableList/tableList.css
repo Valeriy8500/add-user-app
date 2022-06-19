@@ -1,15 +1,14 @@
 .main-content__table-list {
   width: 100%;
-  max-width: 1576px;
   list-style-type: none;
   padding: 0;
 }
 
 .main-content__item {
   width: 100%;
-  min-height: 48px;
+  min-height: 40px;
   display: grid;
-  grid-template-columns: 240px 272px 311px 329px 280px 80px;
+  grid-template-columns: 2fr 2fr 2fr 2fr 2fr 1fr;
   background-color: #ffffff;
   border-radius: 6px;
   margin-bottom: 4px;
@@ -30,7 +29,7 @@
   font-size: 16px;
   line-height: 20px;
   color: #353D4B;
-  width: 225px;
+  width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -51,7 +50,6 @@
 
 .main-content__info-block {
   width: 100%;
-  max-width: 1221px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -62,8 +60,8 @@
 }
 
 .main-content__show-btn {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border: none;
   background-color: white;
   font-weight: 600;
@@ -77,8 +75,8 @@
 }
 
 .main-content__del-btn {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border: none;
   background-color: white;
   font-weight: 600;
@@ -89,4 +87,17 @@
 .main-content__del-btn:hover {
   cursor: pointer;
   opacity: 0.6;
+}
+
+@media (max-width: 1280px) {
+  .main-content__item {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+@media (max-width: 800px) {
+  .main-content__item {
+    padding-right: 0;
+  }
 }
