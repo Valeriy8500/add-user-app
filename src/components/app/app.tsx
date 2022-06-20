@@ -3,7 +3,7 @@ import Header from '../header/header';
 import Content from '../content/content';
 import './app.css';
 
-const App = () => {
+const App = (): React.ReactElement => {
 
   return (
     <div className='app'>

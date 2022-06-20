@@ -1,4 +1,9 @@
-export const defaultInfo = [
+import {
+  IInfoData,
+  IDefaultId
+} from '../interfaces/interfaces';
+
+export const defaultInfo: IInfoData[] = [
   {
     secondName: 'Иванов',
     name: 'Иван',
@@ -65,6 +70,6 @@ export const inputsDefaultValues = {
   login: '',
 };
 
-export const defaultId = {
+export const defaultId: IDefaultId = {
   id: null
 };
