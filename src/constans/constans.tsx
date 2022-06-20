@@ -62,7 +62,7 @@ export const headingsItems = [
   'Логин'
 ];
 
-export const inputsDefaultValues = {
+export const inputsDefaultValues: IInfoData = {
   secondName: '',
   name: '',
   middleName: '',
