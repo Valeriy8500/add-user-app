@@ -10,3 +10,9 @@ export interface IInfoData {
 export interface IDefaultId {
   id: number | null
 }
+
+export interface ITableListProps {
+  info: IInfoData[];
+  onDeletebtn: (id: number) => void;
+  onShowbtn: (id: number) => void;
+}

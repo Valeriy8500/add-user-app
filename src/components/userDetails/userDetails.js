@@ -1,15 +1,15 @@
 import React from 'react';
 import { Input } from '../../atomicComponents/input';
 import closeButton from './close_button.svg';
+import { generateId } from '../../shared/sharedFunction';
 import './userDetails.css';
-
-let generationId = 7;
 
 const UserDetails = ({
   closeModal,
   saveData,
   setData,
-  data
+  data,
+  infoData
 }) => {
 
   const onEsc = React.useCallback((evt) => {
@@ -46,6 +46,7 @@ const UserDetails = ({
 
   const onBtnOkHandler = (evt) => {
     evt.preventDefault();
+    const newId = generateId(infoData);
 
     const newData = {
       secondName: data.secondName.trim(),
@@ -53,8 +54,9 @@ const UserDetails = ({
       middleName: data.middleName.trim(),
       email: data.email.trim(),
       login: data.login.trim(),
-      id: generationId++
+      id: newId
     };
+
     saveData({ ...newData });
     closeModal();
   };

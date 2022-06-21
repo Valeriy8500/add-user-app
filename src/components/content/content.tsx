@@ -69,7 +69,7 @@ const Content = (): React.ReactElement => {
     setShowModal(false);
   }, []);
 
-  const onDeletebtn = React.useCallback((id: number) => {
+  const onDeletebtn = React.useCallback((id: number): void => {
     // Клик на кнопку удалить, вызов confirmModal
     setShowConfirmModal((prev) => {
       return !prev;
@@ -88,7 +88,11 @@ const Content = (): React.ReactElement => {
     const after = infoData.slice(idx + 1);
     const newArray = [...before, ...after];
 
-    setInfoData(() => newArray);
+    const correctIdsArr = newArray.map((item, idx) => {
+      return { ...item, id: idx + 1 };
+    });
+
+    setInfoData(() => correctIdsArr);
     setShowConfirmModal(prev => !prev);
   }, [id.id, infoData]);
 
@@ -129,7 +133,8 @@ const Content = (): React.ReactElement => {
             closeModal={closeModal}
             saveData={saveData}
             data={data}
-            setData={setData} />}
+            setData={setData}
+            infoData={infoData} />}
 
         {showConfirmModal &&
           <ConfirmModal
