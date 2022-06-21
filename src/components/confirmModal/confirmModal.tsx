@@ -1,14 +1,17 @@
 import React from 'react';
 import closeButton from './close_button.svg';
+import { IConfirmModal } from '../../interfaces/interfaces';
 import './confirmModal.css';
 
-const ConfirmModal = ({
-  setShowConfirmModal,
-  onConfirmDelete
-}) => {
+const ConfirmModal = (props: IConfirmModal): React.ReactElement => {
 
-  const onEsc = React.useCallback((evt) => {
-    if (evt.key !== 'Escape') {
+  const {
+    setShowConfirmModal,
+    onConfirmDelete
+  } = props;
+
+  const onEsc = React.useCallback((e: any) => {
+    if (e.key !== 'Escape') {
       return;
     }
     setShowConfirmModal(prev => !prev);

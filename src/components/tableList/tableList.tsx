@@ -3,7 +3,7 @@ import { headingsItems } from '../../constans/constans';
 import { ITableListProps } from '../../interfaces/interfaces';
 import './tableList.css';
 
-const TableList: React.FC<ITableListProps> = (props) => {
+const TableList = (props: ITableListProps): React.ReactElement => {
 
   const {
     info,
