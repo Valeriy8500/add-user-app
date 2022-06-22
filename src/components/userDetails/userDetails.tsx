@@ -2,17 +2,22 @@ import React from 'react';
 import { Input } from '../../atomicComponents/input';
 import closeButton from './close_button.svg';
 import { generateId } from '../../shared/sharedFunction';
+import { IUserDetailsProps } from '../../interfaces/interfaces';
 import './userDetails.css';
 
-const UserDetails = ({
-  closeModal,
-  saveData,
-  setData,
-  data,
-  infoData
-}) => {
+const UserDetails = (props: IUserDetailsProps): React.ReactElement => {
 
-  const onEsc = React.useCallback((evt) => {
+  const {
+    closeModal,
+    saveData,
+    setData,
+    data,
+    infoData
+  } = props;
+
+  const [disabled, setDisabled] = React.useState<boolean>(true);
+
+  const onEsc = React.useCallback((evt: any) => {
     if (evt.key !== 'Escape') {
       return;
     }
@@ -28,24 +33,21 @@ const UserDetails = ({
   }, [onEsc]);
 
   React.useEffect(() => {
-    if (data.secondName !== '' &&
+    if (
+      data.secondName !== '' &&
       data.name !== '' &&
       data.middleName !== '' &&
       data.email !== '' &&
-      data.login !== '') {
-
-      const addButton = document.querySelector('.form__button');
-      addButton.disabled = false;
-      addButton.style = 'color: #ffffff; opacity: 1';
+      data.login !== ''
+    ) {
+      setDisabled(false);
     } else {
-      const addButton = document.querySelector('.form__button');
-      addButton.style = 'color: rgba(255, 255, 255, 0.4); opacity: 0.5';
-      addButton.disabled = true;
+      setDisabled(true);
     }
   }, [data]);
 
-  const onBtnOkHandler = (evt) => {
-    evt.preventDefault();
+  const onBtnOkHandler = (e: React.FormEvent): void => {
+    e.preventDefault();
     const newId = generateId(infoData);
 
     const newData = {
@@ -61,7 +63,10 @@ const UserDetails = ({
     closeModal();
   };
 
-  const onChangeItem = (id, value) => {
+  const onChangeItem = (id: string, e: React.ChangeEvent): void => {
+    const element = e.target as HTMLInputElement;
+    const { value } = element;
+
     if (value.trim() === '') {
       setData((prev) => ({ ...prev, [id]: '' }));
     } else {
@@ -82,7 +87,7 @@ const UserDetails = ({
         <form
           className='form'
           id='form'
-          onSubmit={onBtnOkHandler} >
+          onSubmit={(e: React.FormEvent) => onBtnOkHandler(e)} >
 
           <label className='form__label'>
             Фамилия *
@@ -92,7 +97,7 @@ const UserDetails = ({
               type='text'
               placeholder=' Введите фамилию'
               required
-              onChange={(e) => onChangeItem(e.target.id, e.target.value)}
+              onChange={(e: React.ChangeEvent) => onChangeItem('secondName', e)}
               value={data.secondName} />
           </label>
 
@@ -104,7 +109,7 @@ const UserDetails = ({
               type='text'
               placeholder=' Введите имя'
               required
-              onChange={(e) => onChangeItem(e.target.id, e.target.value)}
+              onChange={(e: React.ChangeEvent) => onChangeItem('name', e)}
               value={data.name} />
           </label>
 
@@ -116,7 +121,7 @@ const UserDetails = ({
               type='text'
               placeholder=' Введите отчество'
               required
-              onChange={(e) => onChangeItem(e.target.id, e.target.value)}
+              onChange={(e: React.ChangeEvent) => onChangeItem('middleName', e)}
               value={data.middleName} />
           </label>
 
@@ -128,7 +133,7 @@ const UserDetails = ({
               type='text'
               required
               placeholder=' Введите электронную почту'
-              onChange={(e) => onChangeItem(e.target.id, e.target.value)}
+              onChange={(e: React.ChangeEvent) => onChangeItem('email', e)}
               value={data.email} />
           </label>
 
@@ -140,7 +145,7 @@ const UserDetails = ({
               type='text'
               placeholder=' Введите логин'
               required
-              onChange={(e) => onChangeItem(e.target.id, e.target.value)}
+              onChange={(e: React.ChangeEvent) => onChangeItem('login', e)}
               value={data.login} />
           </label>
 
@@ -151,8 +156,8 @@ const UserDetails = ({
 
         <div className='form__button-block'>
           <button
-            className='form__button'
-            disabled
+            className={disabled ? 'form__button form__button-dsbl' : 'form__button'}
+            disabled={disabled}
             form='form'>
             Готово
           </button>

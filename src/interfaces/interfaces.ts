@@ -19,7 +19,15 @@ export interface ITableListProps {
   onShowbtn: (id: number) => void;
 }
 
-export interface IConfirmModal {
+export interface IConfirmModalProps {
   setShowConfirmModal: React.Dispatch<React.SetStateAction<boolean>>;
   onConfirmDelete: () => void;
+}
+
+export interface IUserDetailsProps {
+  closeModal: () => void;
+  saveData: (newData: IInfoData) => void;
+  setData: React.Dispatch<React.SetStateAction<IInfoData>>;
+  data: IInfoData;
+  infoData: IInfoData[];
 }

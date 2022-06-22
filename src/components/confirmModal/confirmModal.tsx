@@ -1,9 +1,9 @@
 import React from 'react';
 import closeButton from './close_button.svg';
-import { IConfirmModal } from '../../interfaces/interfaces';
+import { IConfirmModalProps } from '../../interfaces/interfaces';
 import './confirmModal.css';
 
-const ConfirmModal = (props: IConfirmModal): React.ReactElement => {
+const ConfirmModal = (props: IConfirmModalProps): React.ReactElement => {
 
   const {
     setShowConfirmModal,

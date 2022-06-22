@@ -1,6 +1,6 @@
 import { IInfoData } from '../interfaces/interfaces';
 
-export function generateId(infoData: IInfoData[]) {
+export function generateId(infoData: IInfoData[]): number {
   let newId = 0;
 
   if (infoData?.length) {
