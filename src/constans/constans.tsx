@@ -54,7 +54,7 @@ export const defaultInfo: IInfoData[] = [
   }
 ];
 
-export const headingsItems = [
+export const headingsItems: string[] = [
   'Фамилия',
   'Имя',
   'Отчество',
