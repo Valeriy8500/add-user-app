@@ -31,3 +31,12 @@ export interface IUserDetailsProps {
   data: IInfoData;
   infoData: IInfoData[];
 }
+
+export interface ITextField {
+  id: string;
+  className: string;
+  type: string;
+  placeholder: string;
+  onChange: (e: React.ChangeEvent) => void;
+  value: string;
+}

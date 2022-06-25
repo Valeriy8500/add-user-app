@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input } from '../../atomicComponents/input';
+import { TextField } from '../../atomicComponents/input';
 import closeButton from './close_button.svg';
 import { generateId } from '../../shared/sharedFunction';
 import { IUserDetailsProps } from '../../interfaces/interfaces';
@@ -91,47 +91,43 @@ const UserDetails = (props: IUserDetailsProps): React.ReactElement => {
 
           <label className='form__label'>
             Фамилия *
-            <Input
+            <TextField
               id='secondName'
               className='form__input'
               type='text'
               placeholder=' Введите фамилию'
-              required
               onChange={(e: React.ChangeEvent) => onChangeItem('secondName', e)}
               value={data.secondName} />
           </label>
 
           <label className='form__label'>
             Имя *
-            <Input
+            <TextField
               id='name'
               className='form__input'
               type='text'
               placeholder=' Введите имя'
-              required
               onChange={(e: React.ChangeEvent) => onChangeItem('name', e)}
               value={data.name} />
           </label>
 
           <label className='form__label'>
             Отчество *
-            <Input
+            <TextField
               id='middleName'
               className='form__input'
               type='text'
               placeholder=' Введите отчество'
-              required
               onChange={(e: React.ChangeEvent) => onChangeItem('middleName', e)}
               value={data.middleName} />
           </label>
 
           <label className='form__label'>
             E-mail *
-            <Input
+            <TextField
               id='email'
               className='form__input'
               type='text'
-              required
               placeholder=' Введите электронную почту'
               onChange={(e: React.ChangeEvent) => onChangeItem('email', e)}
               value={data.email} />
@@ -139,12 +135,11 @@ const UserDetails = (props: IUserDetailsProps): React.ReactElement => {
 
           <label className='form__label'>
             Логин *
-            <Input
+            <TextField
               id='login'
               className='form__input'
               type='text'
               placeholder=' Введите логин'
-              required
               onChange={(e: React.ChangeEvent) => onChangeItem('login', e)}
               value={data.login} />
           </label>

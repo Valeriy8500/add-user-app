@@ -1,20 +1,20 @@
 import React from 'react';
+import { ITextField } from '../interfaces/interfaces';
 
-export const Input = ({
-  id,
-  className,
-  type,
-  placeholder,
-  required,
-  onChange,
-  value,
-  ...props
-}) => {
+export const TextField = (props: ITextField): React.ReactElement => {
+
+  const {
+    id,
+    className,
+    type,
+    placeholder,
+    onChange,
+    value
+  } = props;
 
   return (
     <div>
       <input
-        {...props}
         id={id}
         type={type}
         placeholder={placeholder}
